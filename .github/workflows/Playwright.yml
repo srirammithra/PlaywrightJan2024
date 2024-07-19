@@ -6,8 +6,18 @@ on:
 jobs: 
   PlaywrightE2E:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.40.1-focal
+      env:
+        ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Say Hello
-        run: echo Hello there!
+      - name: Run Tests
+        run: |
+        | echo "Start the shooping store application"
+        | ./shopping-store-linux-amd64 &
+        | echo "Install dependencies"
+        | npm ci
+        | echo "Run E2E tests"
+        | npm run test
