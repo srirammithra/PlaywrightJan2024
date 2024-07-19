@@ -15,9 +15,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Run Tests
         run: |
-        | echo "Start the shooping store application"
-        | ./shopping-store-linux-amd64 &
-        | echo "Install dependencies"
-        | npm ci
-        | echo "Run E2E tests"
-        | npm run test
+          echo "Start the shopping store application"
+          ./shopping-store-linux-amd64 &
+          echo "Install dependencies"
+          npm ci
+          echo "Run E2E tests"
+          npm run test
